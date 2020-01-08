@@ -6,6 +6,7 @@ import utils
 reload(utils)
 from utils import *
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.model_selection import train_test_split
 
 
 # Function to get word2vec representations
@@ -147,6 +148,8 @@ def main():
 
     # Extract list of reviews from the training set
     # Note that since data is already sorted by review IDs, you do not need to sort it again for a subset
+    train_and_val_review,test_review,train_and_val__label,test_label = train_test_split(data['text'],data['label'],test_size=.2)
+    
     train_data = list(filter(lambda x: x['split'] == 'train', data))
     val_data = list(filter(lambda x: x['split'] == 'val', data))
     test_data = list(filter(lambda x: x['split'] == 'test', data))
