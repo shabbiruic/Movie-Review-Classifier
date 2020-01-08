@@ -43,10 +43,3 @@ def load_w2v():
     with open('w2v.pkl', 'rb') as fin:
         return pkl.load(fin)
 
-
-# Function to reset seeds for the sake of consistency
-def reset_seeds():
-    SEED = 100
-    np.random.seed(SEED)
-    tf.random.set_seed(SEED)
-    random.seed(SEED)
